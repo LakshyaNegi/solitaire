@@ -8,12 +8,16 @@ import (
 	"github.com/mattn/go-tty"
 )
 
-func (g *Game) Start() {
+func (g *game) Start() {
 	g.IsRunning = true
 	go g.input()
+
+	for g.IsRunning {
+		g.draw()
+	}
 }
 
-func (g *Game) input() {
+func (g *game) input() {
 	d := 3 * time.Second
 
 	tty, err := tty.Open()
@@ -40,11 +44,11 @@ func (g *Game) input() {
 
 		g.screen.Flush()
 
-		g.ExecuteMove()
+		g.executeMove()
 	}
 }
 
-func (g *Game) clearInput(t *time.Timer, d time.Duration) {
+func (g *game) clearInput(t *time.Timer, d time.Duration) {
 	for {
 		<-t.C
 		g.InputBuf.Reset()
