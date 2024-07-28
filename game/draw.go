@@ -9,7 +9,7 @@ import (
 	"golang.org/x/term"
 )
 
-func (g *Game) Draw() {
+func (g *game) draw() {
 	if len(g.ClubsPile.Cards) == 13 &&
 		len(g.HeartsPile.Cards) == 13 &&
 		len(g.DiamondsPile.Cards) == 13 &&
@@ -23,6 +23,8 @@ func (g *Game) Draw() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	x -= 10
 
 	spadeTop := g.SpadesPile.GetTop()
 	g.screen.DrawAt("Spades(S): "+spadeTop.Ansi(), 0, 1)
@@ -48,7 +50,7 @@ func (g *Game) Draw() {
 	g.screen.DrawAt("Moves: "+strconv.Itoa(g.numMoves), x/2, 3)
 	g.screen.DrawAt("Score: "+strconv.Itoa(g.score), x/2, 4)
 
-	for i := range x {
+	for i := range x + 5 {
 		g.screen.DrawAt("-", i, 6)
 	}
 

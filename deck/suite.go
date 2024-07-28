@@ -12,10 +12,9 @@ var RedSuite = map[Suite]bool{Hearts: true, Diamonds: true}
 
 // ANSI escape codes for colors
 const (
-	ColorReset  = "\033[0m"
-	ColorRed    = "\033[31m"
-	ColorBlack  = "\033[34m"
-	ColorYellow = "\033[33m"
+	ColorReset = "\033[0m"
+	ColorRed   = "\033[31m"
+	ColorBlack = "\033[34m"
 )
 
 // Unicode characters for card suits

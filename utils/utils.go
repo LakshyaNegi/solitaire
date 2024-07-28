@@ -16,3 +16,12 @@ func Log(str string) {
 		log.Fatal(err)
 	}
 }
+
+func CharInSlice(a string, list []string) bool {
+	for _, b := range list {
+		if b == a {
+			return true
+		}
+	}
+	return false
+}

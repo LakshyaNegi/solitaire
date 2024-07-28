@@ -7,7 +7,11 @@ import (
 	"strings"
 )
 
-type Game struct {
+type Game interface {
+	Start()
+}
+
+type game struct {
 	IsRunning    bool
 	numMoves     int
 	score        int
@@ -45,7 +49,7 @@ func NewGame() Game {
 
 	drawPile := newDeck
 
-	return Game{
+	return &game{
 		IsRunning:    false,
 		numMoves:     0,
 		score:        0,
@@ -59,8 +63,4 @@ func NewGame() Game {
 		HeartsPile:   deck.NewFromCards([]*deck.Card{}),
 		SpadesPile:   deck.NewFromCards([]*deck.Card{}),
 	}
-}
-
-func (g *Game) Update() {
-
 }
